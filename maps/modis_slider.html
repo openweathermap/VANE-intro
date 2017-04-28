@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui' />
+    <title>OWM VANE - NASA GIBS: MODIS Comparison</title>
+    <script src='../leaflet/leaflet-src.js'></script>
+    <script src="../leaflet/leaflet-side-by-side.js"></script>
+    <link href='../leaflet/leaflet.css' rel='stylesheet' />
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+    }
+    .left_lable{
+            position: absolute;
+            font-size: 26px;
+            top: 20px;
+            left: 65px;
+            z-index: 10000;
+                color: wheat;
+    text-shadow: 0 3px 12px rgba(26,26,27,.92);
+    font-family: sans-serif;
+
+    }
+    .right_lable{
+            position: absolute;
+            font-size: 26px;
+            top: 20px;
+            right: 65px;
+            z-index: 10000;
+            color: wheat;
+    text-shadow: 0 3px 12px rgba(26,26,27,.92);
+    font-family: sans-serif;
+
+    }
+    </style>
+</head>
+
+<body>
+        <div class="left_lable"> VANE OWM</div> 
+        <div class="right_lable"> GIBS NASA</div>
+    <div id='map'>
+
+    </div>
+
+    <script>
+    var map = L.map('map').setView([0.0, -0.09], 3);
+
+    L.tileLayer('http://{s}.maps.owm.io:8099/58825f9524cec8000135ab64/{z}/{x}/{y}?hash=81e44e627f0ae6f7392bfa9d2ad7c658').addTo(map);
+
+    var vane_modis = L.tileLayer('http://sat.owm.io/sql/{z}/{x}/{y}?select=b1,b4,b3&from=terra&color=modis&appid=9de243494c0b295cca9337e1e96b00e2', {attribution: "VANE, Openweathermap"}).addTo(map);
+    
+    var d = new Date();
+    var curr_date = d.getDate();
+    var curr_month = d.getMonth()+1;
+    var curr_year = d.getFullYear();
+    if(curr_date<10){curr_date='0'+curr_date};
+    if(curr_month<10){curr_month='0'+curr_month};
+    var time = (curr_year + "-" + curr_month + "-" + curr_date);
+
+    var gibs_modis = L.tileLayer('https://map1a.vis.earthdata.nasa.gov/wmts-webmerc/MODIS_Terra_CorrectedReflectance_TrueColor/default/' + time + '/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpg', {
+        maxZoom: 18,
+        id: 'sattelite',
+        attribution: "NASA"
+    }).addTo(map);
+
+    L.tileLayer('http://{s}.maps.owm.io:8099/58c8f11e73e9ac0001bbf8ac/{z}/{x}/{y}?hash=81e44e627f0ae6f7392bfa9d2ad7c658').addTo(map);
+
+    L.control.sideBySide(vane_modis, gibs_modis).addTo(map);
+    </script>
+</body>
+</html>

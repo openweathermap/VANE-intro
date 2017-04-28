@@ -1,0 +1,16 @@
+.owm-city-name {
+    font-weight: bold;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.owm-forecast-table  td{
+    padding: 0px 5px;
+    white-space: nowrap;
+}
+
+.owm-city-copyright {
+    text-align: right;
+    font-size: 10px;
+    padding-right: 7px;
+}

@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>VANE geospatial platform presentation</title>
+
+		<meta name="description" content="VANE platform is a Big Data technology to process large volumes of satellite and weather data and provide the comprehensive data feeds and maps through the single API language">
+		<meta name="author" content="">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css" id="theme">
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+
+
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background-image="img/map-bg.jpg">
+					<h1 class="vane_title">vane:</h1>
+					<h3>The geospatial platform for online processing of satellite and weather data</h3>
+					<br><br>
+					<p>
+						<small><a href="http://twitter.com/openweathermap">@openweathermap</a></small>
+					</p>
+				</section>
+
+				<section data-background-image="img/map-bg.jpg">
+					<h2>About</h2>
+					<p>
+					Our mission is to make a data of Environment open and available through easy to use cloud products and APIs to power new innovative applications with imagery, weather forecasts, and other data feeds that are updatated in real time.
+					</p>
+					<br><br>
+					<p style="margin:auto;width: 50%;text-align: justify;">
+						<small>— <a href="http://openweathermap.org">Openweathermap.org - Weather APIs</a></small>
+					<br/>
+						<small>— <a href="http://openweathermap.org">OWM.io - VANE platform and tools</a></small>
+					</p>			
+
+				</section>
+
+				<section data-background="#ddd">
+					<div class="features__item-logo" style="position: absolute;"><img src="http://owm.io/themes/owm/assets/img/icon-brackets.png" alt="Query Language" width="45" class="plain"></div>
+					<h2>VANE Query language</h2>
+					<p>
+					SQL fashioned language for intuitive queries to process and get data:
+					</p>
+					<table>
+						<tbody>
+							<thead>
+								<th><code>Select</code></th>
+								<th><code>Apply</code></th>
+								<th><code>Get</code></th>
+
+								
+							</thead>
+							<tr>
+								<td><ul><li><span>Data set</span></li> <li><span>Imagery bands</span></li> <li><span>Time period</span></li> <li><span>Metadata</span></li> <li><span>Location</span></li></ul></td>
+								<td><ul><li><span>Color processing</span></li> <li><span>Operations with imagery</span></li> <li><span>Styles for weather maps</span></li></ul></td>
+								<td><ul><li><span>Tiles (z,x,y)</span></li> <li><span>Polygons (geojson)</span></li></ul></td>
+							</tr>
+						</tbody>
+					</table>
+					<pre><code class="hljs haskel" data-trim>http://sat.owm.io/sql/{z}/{x}/{y}?select={select}&from={from}&where={where}&order={order}&op={op}&APPID={APIKEY}
+					</code></pre>
+				</section>
+
+				<section>
+					
+					<div class="features__item-logo" style="position: absolute;">
+						<img src="http://owm.io/themes/owm/assets/img/icon-pan.png" width="44" height="43" alt="Research" class="plain">
+					</div>
+					<h2>Visual tools</h2>
+					<p>
+					Get an immediate result with ready-to-use examples, SQL viewer, CartoCSS Map Editor
+					</p>
+					<p>
+					<img src="img/sql-viewer_base.png"/>
+					</p>
+
+				</section>
+
+				<section>
+										
+					<div class="features__item-logo" style="position: absolute;">
+					<img src="http://owm.io/themes/owm/assets/img/icon-lamp.png" width="33" height="45" alt="Analytics" class="plain">
+					</div>
+
+					<h2>Analytic tools</h2>
+					<p>
+					Compute and process data, prototype and share your results using Python environment
+					</p>
+					<p>
+					<img src="img/jupyter_ndvi.png"/>
+					</p>	
+
+				</section>
+
+				<section>
+
+					<h1>How to create online products?</h1>	
+
+				</section>
+
+				<section data-background="img/mainpage_slide3.png">
+					<h4 style="color:wheat;">Online products</h4>
+					<h2 style="color:#fff;">Global Base Map</h2>
+					<p style="color:wheat;">
+						Create your own <span style="color:white">Base Map</span> consisting of satellite images with different resolution and updated continuously. Customize queries to get <code style="color:white">True Color</code> maps, <code style="color:white">False color</code>, <code style="color:white">NDVI</code> for vegetation analysis, <code style="color:white">NDWI</code> for water resouses analysis, etc. Integrate maps to your apps or GIS immediately
+					</p>
+				</section>
+				
+				<section >
+						<h1>MODIS Base Map - VANE Language</h1>
+				</section>
+
+				<section id="modis">
+					<p><small>MODIS True color imagery is used for low zoom levels. The use of VANE language allows to get the most recent MODIS imagery (<span class="fragment highlight-red">less than 1 hour after satellites path</span>) along with past day imagery to cover the entire Earth.</small></p>
+					
+
+					   	<iframe src='maps/modis_slider.html' style="width:100%; height:520px;"></iframe>
+
+
+
+				</section>
+
+
+				<section data-background="#ddd">
+						<p class="fragment highlight-red"><code>from=modis</code></p>
+						<p class="fragment highlight-red"><code>color=modis</code></p>
+						<p class="fragment highlight-red"><code>order=last</code></p>
+
+						<pre><code class="hljs haskell">http://{s}.sat.owm.io/sql/{z}/{x}/{y}?select=b1,b4,b3&from=modis&order=last&color=modis&APPID={APIKEY}</code></pre>
+						<br/>
+
+						<div style="margin:-15px 0 0 0"><a href="http://owm.io/sql-viewer?select=b1%2Cb4%2Cb3&from=modis&where=&op=&order=last&color=modis&lat=38.41&lon=31.99&zoom=3#" target="_blank" class="button">Open in SQL Viewer</a></div>
+				</section>
+				
+				<section>
+					<h3>Combine MODIS with weather maps</h3>	
+
+					<p>
+					<img src="img/modis-weathermap.png"/>
+					</p>
+
+					<p><small><a href="http://owm.io/weathermap?basemap=map&cities=true&layer=precipitation&lat=30&lon=-20&zoom=3" target="_blank">owm.io/weathermap</a></small></p>
+				</section>
+
+
+				<section id="weathermap">
+
+					<div class="ribbon">
+					  <a href="https://github.com/owm-inc/VANE-intro/tree/master/apps" target="_blank">Fork me on GitHub</a>
+					</div>
+
+
+					<h3>Display current weather in cities with weather overlays</h3>	
+
+
+					<iframe src='apps/leaflet-owm.html' style="width:100%; height:520px;"></iframe>
+				</section>
+
+				<section data-background="#ddd">
+					<h3>Style weather maps with Map CSS Editor</h3>
+					
+					<pre><code class="hljs" data-trim contenteditable>
+						#Snow {
+								raster-opacity:0.7;
+								raster-scaling:lanczos;
+								raster-colorizer-default-mode: linear;
+								raster-colorizer-default-color: transparent;
+								raster-colorizer-stops:
+								stop(0, transparent)
+								stop(5, #00d8ff)
+								stop(10, #00b6ff)
+								stop(25.076, #9549ff);
+							}
+												
+					</code></pre>
+
+					<p>
+					<img src="img/mapeditor.png"/>
+					</p>
+				</section>
+
+
+
+
+				<section data-background="img/mainpage_slide3.png" data-background-transition="zoom" style="color:white">
+					<h3 style="color: white">Base Map - True color</h3>
+					<p>
+						<table>
+						<tbody>
+							<thead>
+								<th><code>Select</code></th>
+								<th><code>Apply</code></th>
+							</thead>
+							<tr>
+								<td><ul>
+								<li><code class="fragment highlight-red">from=modis</code><code class="fragment highlight-red">&select=b1,b4,b3</code></li> 
+								<li><code class="fragment highlight-red">from=S2</code><code class="fragment highlight-red">&select=b4,b3,b2</code></li> 
+								<li><code class="fragment highlight-red">from=landsat</code><code class="fragment highlight-red">&select=b4,b3,b2</code></li>
+								<li><code class="fragment highlight-red">from=all</code></li></ul></td>
+
+								<td><ul>
+								<li><code class="fragment highlight-red">color=log()</code></li> 
+								<li><code class="fragment highlight-red">color=gamma()</code></li> 
+								<li><code class="fragment highlight-red">color=brightness()</code></li></ul></td>
+							</tr>
+						</tbody>
+					</table>
+					</p>
+					<p><a href="http://owm.io/sql-viewer?select=b4%2Cb3%2Cb2&from=all&where=&op=&order=last&color=log%281.7%29%2Cbrightness%283000%3A19000%29&lat=-12.72&lon=130.39&zoom=11#" target="_blank" class="button">Open in SQL Viewer</a></p>
+				</section>
+
+
+				<section data-background="img/base-false-color.png" data-background-transition="zoom" style="color:white">
+					<h3 style="color: white">Base Map - False color</h3>
+					<p>
+						<table class="table_white">
+						<tbody>
+							<thead>
+								<th><code>Select</code></th>
+								<th><code>Apply</code></th>
+							</thead>
+							<tr>
+								<td><ul>
+								<li><code>from=modis&select=b6,b5,b2</code></li> 
+								<li><code>from=S2&select=b8,b3,b2</code></li> 
+								<li><code>from=landsat&select=b5,b3,b2</code></li>
+								<li><code>from=all</code></li></td>
+								<td><ul>
+								<li><code>color=log()</code></li> 
+								<li><code>color=gamma()</code></li>
+								<li><code>color=brightness()</code></li>
+								</ul></td>
+							</tr>
+						</tbody>
+					</table>
+					</p>
+					<p><a href="http://owm.io/sql-viewer?select=b8%2Cb3%2Cb2&from=s2&where=&op=&order=last&color=log%281.7%29%2Cbrightness%283000%3A19000%29&lat=44.76&lon=-1.14&zoom=11#" target="_blank" class="button">Open in SQL Viewer</a></p>
+				</section>
+
+				<section data-background="img/mainpage_ndvi1.png">
+					<div style="background: #fff; padding:50px;">
+					<h3>Base Map - indexed maps</h3>
+					<p>
+						Near-infrared and red spectral bands are used to calculate and monitor health vegetation growth. 
+						This index is mapped from a white to green hue. NDVI is strongly important for agriculture and Farm management applications.
+					</p>
+					<p>Use <code>op=NDVI</code> to apply operation to any two spectral bands.
+					</p>
+					<div style="margin:-15px 0 0 0"><a href="http://owm.io/sql-viewer?select=b5%2Cb4&from=&where=&op=ndvi&order=last&color=&lat=37.13&lon=-120.61&zoom=11#" target="_blank" class="button">Open in SQL Viewer</a></div>
+					</div>
+
+				</section>
+
+				<section>
+					<p style="text-align: justify;">VANE analytic tools include <span class="fragment highlight-red">Jupyter notebooks</span>. Try it to fetch weather and satellite data, make a research on environment, prototype your app, save and share results in a form of articles</p>
+					
+					<ul>
+						<li>calculate NDVI values</li>
+						<li>detect changes on satellite images</li>
+						<li>build weather charts, etc.</li>
+					</ul>
+					<br>
+
+					<p><a class="button" href="http://owm.io/jupyter/start" target="_blank">Start Jupyter</a></p>
+				</section>
+
+				<section data-background="#ddd">
+					<p>Examples and how-tos</p>
+					
+					<pre><code class="hljs python" data-trim contenteditable>
+						import sys, os
+						from vane import sql, utils
+
+						lat = 46.8284
+						lon = 38.5386
+
+						scenes = sql.search([lon, lat])
+
+						print( '%s Scenes found ' % len(scenes))
+
+						for f in scenes:
+    					print( "%s clouds %d" % ( f['date'], f['clouds']) )
+												
+					</code></pre>
+					<small>e.g. - search for all available images at the specified location</small>
+
+					<img src="img/jupyter_example1.png"/>
+
+				</section>
+
+
+
+
+
+
+
+				<section >
+						<h1>Cases - Agriculture</h1>
+				</section>
+
+				<section id="agri" data-background="img/img-uk-farmland_big.jpg" class="list">
+
+					<div style="background: #fff; padding: 50px;">
+					<h3>Agriculture & smart farming</h3>
+					<div style="text-align: left">
+					
+					<li >Any location to start use <span class="fragment highlight-red">satellite imagery and weather</span> instantly</li>
+
+
+					<li>Timelapse imagery optimised for most recent and continuously updated <span  class="fragment highlight-red">best cover</span></li>
+
+
+					<li>Use <span  class="fragment highlight-red">weather History API</span> to detect weather influence and stay alerted with <span  class="fragment highlight-red">weather triggers API</span></li>
+					</div>
+					</div>
+				</section>
+
+
+				<section data-background="#ddd">
+
+					<h3>Combine in your App:</h3>
+					
+					
+					<p>NDVI Base Map (API)</p>
+
+
+					<pre><code class="hljs haskell" data-trim>http://sat.owm.io/sql/{z}/{x}/{y}?select=b8,b4&from=s2&op=ndvi&order=last&APPID={APIKEY}
+					</code></pre>
+
+
+					<p>History weather (API)</p>
+
+					<pre><code class="hljs haskell" data-trim>http://history.openweathermap.org/data/2.5/history/city?lat={lat}&lon={lon}&type=hour&start={start}&end={end}&APPID={APIKEY}
+					</code></pre>
+					
+					
+					<br/>
+					<p><small><a href="http://owm.io/agri">owm.io/agri</a></small></p>
+					<p><small><a href="http://openweathermap.org/history">openweathermap.org/history</a></small></p>
+
+				</section>
+
+				<section data-background="#ddd">
+
+					<h3>Be creative :)</h3>
+
+					<p>Get NDVI by polygon and apply your custom colors</p>
+					
+					<pre><code class="hljs haskell" data-trim contenteditable>
+						http://sat.owm.io/sql?from=s2&select=b8,b4&where=day=2016-07-10&op=ndvi&polygon=
+						{"type":"Feature","geometry":{"type":"Polygon","coordinates":
+						[[[-102.73,34.43],[-102.73,34.49],[-102.57,34.49],[-102.57,34.43],[-102.73,34.43]]]}}&color=0:d93f2aff;0.05:df452cff;0.1:e66c2eff;0.15:e4622dff;0.2:f2b331ff; 0.25:f7d932ff;0.3:eff630ff;0.35:b0f321ff;0.4:80f116ff;0.45:76f013ff; 0.5:74ed17ff;0.55:6cde28ff;0.6:50ab56ff;0.65:317b83ff;0.7:0648b3ff; 0.75:1f46f0ff;0.8:2d45e9ff;0.85:533dcaff;0.9:783bb1ff;1:a342aeff;&APPID={APIKEY}
+					</code></pre>
+
+					<p>
+					<img src="img/sql-ndvi-color.png"/>
+					</p>
+					<p><small>Learn more - <a href="http://owm.io/agri">owm.io/agri</a></small></p>
+
+				</section>
+
+
+
+				<section data-background-image="img/map-bg.jpg" class="list">
+					<div>
+					<li><span class="fragment highlight-red">Global Base MapM</span> - we offer fast start for developers with Satellite and Weather ready-to-use data and online tools</li>
+					<li><span class="fragment highlight-red">VANE tools</span> enable to apply your processing online and get immediate results in a form of API or visual prototype</li>
+					<li>We offer <span class="fragment highlight-red">freemium</span> based model that requires no costs to start and extend your solution or system</li>
+					<li><span class="fragment highlight-red">Contact us</span> - we are open for proposals and ideas on creating of analytic products and models and launching collaborative products</li>
+					</div>
+				</section>
+
+				<section data-background-image="img/map-bg.jpg">
+					<h2>Contact us</h2>
+					<p style="margin:auto;width: 50%;text-align: justify;">
+					<ul>
+					<li><a href="http://openweathermap.org">Openweathermap.org</a> — Weather APIs</li>
+					<li><a href="http://openweathermap.org">OWM.io</a> — VANE platform and tools</li>
+					<li><a href="http://owm.io/workouts" title="" target="_blank">VANE Workshops</a> - blog for developers</li>
+					</ul>
+					<p class="social">
+					<small><a href="https://twitter.com/OpenWeatherMap" title="twitter" >@openweathermap</a> | </small>
+					<small><a href="https://www.facebook.com/groups/270748973021342" >Facebook OWM group</a> | </small> 
+					<small><a href="https://github.com/owm-inc" >Github</a> </small>
+					</p>
+
+				</section>
+
+				
+
+				
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
