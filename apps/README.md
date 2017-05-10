@@ -1,8 +1,6 @@
 ## Leaflet-OpenWeatherMap
 
-This example to show current weather in 200+ main cities is based on [Kosmosnimki prototype app](https://github.com/ScanEx/Leaflet-OpenWeatherMap).
-
-"Kosmosnimki" server is used to get city local time shift in forecast display.
+This is example to show current weather in 20 cities on the Laeflet map and combine it with [weather map](https://owm.io/weathermap) layers. It's based on [Kosmosnimki prototype app](https://github.com/ScanEx/Leaflet-OpenWeatherMap) to get city local time shift in forecast display. You can add more cities or choose different ones.
 
 ### Usage
 ```
@@ -12,7 +10,7 @@ This example to show current weather in 200+ main cities is based on [Kosmosnimk
 
 The following `options` for `L.OWMLayer` constructor are available:
   * `key`: [OpenWeatherMap APPID](http://openweathermap.org/appid)
-  * `cityIDs`: array of city IDs, see [OpenWeatherMap API](http://openweathermap.org/api)
+  * `cityIDs`: array of city IDs, get city IDs list - [download](http://bulk.openweathermap.org/sample/city.list.json.gz)
   
 ### License
 [MIT](https://opensource.org/licenses/MIT)
