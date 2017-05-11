@@ -39,7 +39,7 @@
         providers['Satellite'] = {
             title: 'MODIS',
             icon: 'img/layers-satellite.png',
-            layer: L.tileLayer('http://{s}.sat.owm.io/sql/{z}/{x}/{y}?select=b1,b4,b3&from=modis&order=last&color=modis&appid=9de243494c0b295cca9337e1e96b00e2', {
+            layer: L.tileLayer('http://{s}.sat.owm.io/sql/{z}/{x}/{y}?select=b1,b4,b3&from=modis&order=last&color=modis&appid=d22d9a6a3ff2aa523d5917bbccc89211', {
                 maxZoom: 19,
                 attribution: '&copy; <a href="http://owm.io">VANE</a>'
             })
@@ -53,24 +53,24 @@
         
         //http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=d9cfe451d5a775abaf178aec4951b4b0
 
-        var Temp = L.tileLayer('http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=d9cfe451d5a775abaf178aec4951b4b0', {
+        var Temp = L.tileLayer('http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=d22d9a6a3ff2aa523d5917bbccc89211', {
             maxZoom: 18,
             attribution: '&copy; <a href="http://owm.io">VANE</a>',
             id: 'temp'
         }),
 
-        Wind = L.tileLayer('http://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=d9cfe451d5a775abaf178aec4951b4b0', {
+        Wind = L.tileLayer('http://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=d22d9a6a3ff2aa523d5917bbccc89211', {
             maxZoom: 18,
             attribution: '&copy; <a href="http://owm.io">VANE</a>'
         }),
 
-        Pressure = L.tileLayer('http://tile.openweathermap.org/map/pressure_new/{z}/{x}/{y}.png?appid=d9cfe451d5a775abaf178aec4951b4b0', {
+        Pressure = L.tileLayer('http://tile.openweathermap.org/map/pressure_new/{z}/{x}/{y}.png?appid=d22d9a6a3ff2aa523d5917bbccc89211', {
             maxZoom: 18,
             attribution: '&copy; <a href="http://owm.io">VANE</a>'
         }),
 
 
-        Clouds = L.tileLayer('http://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=d9cfe451d5a775abaf178aec4951b4b0', {
+        Clouds = L.tileLayer('http://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=d22d9a6a3ff2aa523d5917bbccc89211', {
             maxZoom: 18,
             attribution: '&copy; <a href="http://owm.io">VANE</a>'
         });
