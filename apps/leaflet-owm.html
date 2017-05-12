@@ -59,6 +59,11 @@
             id: 'temp'
         }),
 
+        Precipitation = L.tileLayer('http://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=d22d9a6a3ff2aa523d5917bbccc89211', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="http://owm.io">VANE</a>'
+        }),
+
         Wind = L.tileLayer('http://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=d22d9a6a3ff2aa523d5917bbccc89211', {
             maxZoom: 18,
             attribution: '&copy; <a href="http://owm.io">VANE</a>'
@@ -80,7 +85,7 @@
 
         Temp.addTo(map);
 
-        var overlays = {"Temperature": Temp, "Clouds": Clouds, "Pressure": Pressure, "Wind": Wind};
+        var overlays = {"Temperature": Temp, "Precipitation": Precipitation, "Clouds": Clouds, "Pressure": Pressure, "Wind": Wind};
         L.control.layers(overlays, null, {collapsed:false}).addTo(map);
 
         var layers = [];

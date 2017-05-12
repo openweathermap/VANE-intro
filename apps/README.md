@@ -1,6 +1,8 @@
 ## Leaflet-OpenWeatherMap
 
-This is example to show current weather in 20 cities on the Laeflet map and combine it with [weather map](https://owm.io/weathermap) layers. It's based on [Kosmosnimki prototype app](https://github.com/ScanEx/Leaflet-OpenWeatherMap) to get city local time shift in forecast display. You can add more cities or choose different ones.
+This is example of how to fetch Openweathermap API to show current and forecast weather in some cities on the Leaflet map and combine it with [weather map](https://owm.io/weathermap) layers. It's based on [Kosmosnimki prototype app](https://github.com/ScanEx/Leaflet-OpenWeatherMap) to get city local time shift in forecast query. You can add more cities or choose different ones.
+
+[See this map standalone](https://github.com/owm-inc/VANE-intro/tree/master/apps)
 
 ### Usage
 ```
