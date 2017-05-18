@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>VANE geospatial platform for Agriculture applications</title>
+
+		<meta name="description" content="VANE platform is a Big Data technology to process large volumes of satellite and weather data and provide the comprehensive data feeds and maps through the single API language">
+		<meta name="author" content="">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css" id="theme">
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+
+
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+
+				<section data-background-image="img/img-uk-farmland_big.jpg">
+					
+					<section>
+						<div style="background: #fff; padding: 20px 40px 60px 40px; margin:0px 0 -50px 0;">
+						<h1 class="vane_title">vane:</h1>
+						<small>geospatial platform for online processing of satellite and weather data</small>
+						<p>
+						<strong>How to create your own Agriculture application?</strong>
+						</p>
+						</div>
+
+							<a href="#" class="navigate-down">
+							<img width="100" alt="Down arrow" src="img/arrow.png">
+							</a>
+					</section>
+
+					<section data-background="img/map-bg.jpg">
+						<div style="text-align: left" class="list">
+
+						<span style="color:red">Weather</span> - history and forecast for any location with global coverage and more than 30.000 connected stations
+
+
+						</div>
+						<img src="img/agro-workplace-weather.png"/>
+					</section>
+
+					<section data-background="img/map-bg.jpg">
+						<div style="text-align: left" class="list">
+						<span style="color:red">Imagery</span> - any location to start working with free or commercial satellite data through powerfull processing API
+						</div>
+						<img src="img/agro-workplace-sat.png"/>
+					</section>
+
+					
+					<section data-background="img/map-bg.jpg">
+
+						<div style="text-align: left" class="list">
+
+						<span  style="color:red">Alerts</span> - adjust you criteria for in-time awareness on critical weather conditions
+						</div>
+
+						<img src="img/agro-workplace-alerts.png"/>
+
+					</section>
+
+
+
+					<section data-background="#ddd">
+						<div class="features__item-logo" style="position: absolute;"><img src="http://owm.io/themes/owm/assets/img/icon-brackets.png" alt="Query Language" width="45" class="plain"></div>
+						<h2>VANE Query language</h2>
+						<p>
+						SQL fashioned API for intuitive queries to process and get data - ex. <span class="fragment highlight-red">get NDVI by polygon</span>
+						</p>
+						<pre><code class="hljs haskel" data-trim>http://sat.owm.io/sql?from=s2&select=b8,b4&where=day=2016-07-10&op=ndvi&polygon={%22type%22:%22Feature%22,%22geometry%22:{%22type%22:%22Polygon%22,%22coordinates%22:[[[-102.73,34.43],[-102.73,34.49],[-102.57,34.49],[-102.57,34.43],[-102.73,34.43]]]}}&APPID={APIKEY}
+						</code></pre>
+
+						<img src="img/NDVI-tile2.png"/>
+
+
+						<div style="margin:-15px 0 0 0"><a href="http://owm.io/sql-viewer?select=b8,b4&from=s2&order=last&op=ndvi&color=&lat=34.36&lon=-102.39&zoom=11#" target="_blank" class="button">Open in SQL Viewer</a></div>
+					</section>
+
+
+
+					<section data-background="img/mainpage_ndvi1.png">
+						<div style="background: #fff; padding:50px;">
+						<h3>Satelite images - indexed maps</h3>
+						<p>
+							Near-infrared and red spectral bands are used to calculate and monitor health vegetation growth. 
+							NDVI is strongly important for agriculture and Farm management applications.
+						</p>
+						<p>Use <code>op=NDVI</code> to apply operation to any two of spectral bands.
+						</p>
+						<div style="margin:-15px 0 0 0"><a href="http://owm.io/sql-viewer?select=b5%2Cb4&from=&where=&op=ndvi&order=last&color=&lat=37.13&lon=-120.61&zoom=11#" target="_blank" class="button">Open in SQL Viewer</a></div>
+						</div>
+
+					</section>
+
+					<section data-background="#ddd">
+
+					
+						<p>Developers can also calculate vegetation using <strong><a href="http://owm.io/jupyter/start">Python</a></strong></p>
+
+					
+						<pre><code class="hljs python" data-trim contenteditable style="max-height: 460px">
+							#Connect VANE lib
+							from vane import sql
+
+							# Define polygon
+							polygon = '{"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[-101.85,36.04],[-101.85,36.15],[-101.64,36.15],[-101.64,36.04],[-101.85,36.04]]]}}'
+
+							# Define date
+							day = '2016-07-18'
+
+							# Read the first band data
+							x = sql.raw( select="b5", where="day:"+ day, polygon=polygon)
+							# Read the second band data
+							y = sql.raw( select="b4", where="day:"+ day, polygon=polygon)
+
+							# NDVI computing
+							ndvi = (x-y)/(x+y)					
+						</code></pre>
+
+						<small><a href="http://owm.io/vaneLanguage">Learn more about VANE language</a></small>
+					</section>
+
+					<section>
+						<div style="background: #fff; padding: 50px; margin:0px 0 -50px 0;">
+						<p style="font-size:150%"><strong>Cases of OpenWeather products in agricultural applications</strong></p>
+						</div>
+
+					</section>
+
+					<section data-background="img/map-bg.jpg">
+
+						<table style="list">
+						<tr><td width="60%">
+							<p>Current weather, short-term and long-term forecast for area of interest (AOI)</p>
+							<small><p>Current weather and forecast calculated for specific crop for planning of agricultural activity depends on meteorological conditions. </p>
+							<p>Fundamental weather parameters are provided via APIs or maps (precipitations, humidity, air pressure, temperature, wind, clouds, snow).</p>
+							<p> Additional parameters like dew point can be calculated based on fundamental parameters and their deviation during a day</p></small>
+						</td>
+						<td style="vertical-align: middle">
+							<img src="img/EF_screen_charts.png">
+							<img src="img/EF_screen_temp.png">
+
+							<small><a href="https://www.exactfarming.com/en/faq/default/Weather_and_Earth_remote_sensing_data/" target="_blank">See more at Exactfarming.com</a></small>
+						</td>
+
+						</tr>
+
+						</table>
+
+					</section>
+
+
+					<section data-background="img/map-bg.jpg">
+
+					<table style="list">
+						<tr><td width="60%">
+							<p>Historical weather for season dynamic</p>
+							<small><p>A set of historical data allows you to calculate the accumulated indicators for a season (the sum of the active temperatures and the amount of accumulated precipitation), which have a direct impact on the growth of culture.</p>
+							<p>Historical weather data for 5 years allow you to analyse and compare the results with satellite images, the vegetation index, and actual indicators.</p>
+							<p>Calculation of accumulated indicators for the specified period (temperature and precipitation) is based on monitoring of main indicators (temperature, humidity, precipitation)</p></small>
+						</td>
+						<td style="vertical-align: middle; font-size:70%">
+
+						
+						<p><a href="http://openweathermap.org/examples" target="_blank">Learn more from cases of our subscribers, including Google.</a></p>
+					
+						<p>Check the following links:</p>
+						
+						<p><a href="http://openweathermap.org/history">Connect to History Weather API</a></p>
+						<p><a href="http://openweathermap.org/stations">Connect to Weather Station API</a></p>
+						</td>
+						</tr>
+
+					</table>
+
+					</section>
+
+
+					<section data-background="img/map-bg.jpg">
+
+					<table style="list">
+						<tr><td width="60%">
+							<p>Monitoring of crop variable rates with satellite imagery</p>
+							<p><small>Operational and historical satellite images with different resolution allow assessing of the homogeneity of the cultivated areas.</small></p>
+							<p><small>NDVI, EVI and other agricultural indices with unlimited customization of color schemes.</small></p>
+							
+						</td>
+						<td style="vertical-align: middle; font-size:70%">
+
+						<img src="img/fields_Krasnodar.png"/>
+					
+						<p>Check the following links:</p>
+						
+						<p><a href="http://owm.io/sat">Connect to VANE Base Satellite Map with tile API</a></p>
+						</td>
+						</tr>
+
+					</table>
+
+					</section>
+
+
+					<section data-background="img/map-bg.jpg">
+						<div style="text-align: left" class="list">
+
+						<span style="color:red">Sensors</span> - connect your own or try our partner weather stations to collect data and get refined forecasts and targeted alerts
+						</div>
+						<img src="img/weather-vineyards.jpg"/>
+					</section>
+
+
+					<section data-background-image="img/map-bg.jpg" class="list">
+						<div>
+						<li><span class="fragment highlight-red">Global Base Map</span> - we offer fast start for developers with Satellite and Weather ready-to-use data feeds and online tools</li>
+						<li><span class="fragment highlight-red">VANE tools</span> enable to apply your processing online and get immediate results in a form of API or visual prototype</li>
+						<li>We offer <span class="fragment highlight-red">freemium</span> based model, that requires no costs to start and extend your solution or system</li>
+						<li><a href="http://owm.io/about#contacts">Contact us</a> - we are open for proposals and ideas on creating of analytic products and models and launching collaborative products</li>
+						</div>
+
+						<p class="social" style="font-size:80%">
+							<small><a href="https://twitter.com/OpenWeatherMap" title="twitter" >@openweathermap</a> | </small>
+							<small><a href="https://www.facebook.com/groups/270748973021342" >Facebook OWM group</a> | </small> 
+							<small><a href="https://github.com/owm-inc" >Github</a> </small>
+						</p>
+
+					</section>
+
+				</section>
+
+
+				
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
