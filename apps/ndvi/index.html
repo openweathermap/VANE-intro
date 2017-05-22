@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NDVI - OpenWeatherMap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" rel="stylesheet"/><!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+    <link href="themes/owm/assets/css/ndvi.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!--script(src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.2/leaflet.js")-->
+    <!-- JS Global -->
+    <!--script(src="https://maps.googleapis.com/maps/api/js")-->
+    <!-- Optional theme -->
+    <script src="themes/owm/assets/js/bootstrap.min.js"></script><!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="https://api.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.3/leaflet.draw.css" rel="stylesheet"/>
+    <!--script(src='https://api.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.3/leaflet.draw.js')-->
+    <!--script(src="themes/owm/assets/js/L.Control.Zoomslider.js")-->
+  </head>
+  <body>
+    <div id="map-wrap">
+      <div id="map" class="global-map global-map--not-offset">
+        <div class="control-map control-map--ndvi control-map--hidden">
+          <p class="control-map__title control-map__title--ndvi">PICK A DATE</p>
+          <form id="panel-control-dates" class="panel-control-dates"></form>
+        </div>
+        <div id="filters-of-map-legends" class="filters-of-map-legend filters-of-map-legend--ndvi">
+          <div class="filters-of-map-legend__image"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var lat = "44.9318";
+      var lon = "-0.6619";
+      var zoom = 12;
+    </script>
+    <script src="themes/owm/assets/js/ndvi.js"></script>
+  </body>
+</html>
