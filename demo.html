@@ -7,7 +7,7 @@
 		<title>VANE geospatial platform presentation</title>
 
 		<meta name="description" content="VANE platform is a Big Data technology to process large volumes of satellite and weather data and provide the comprehensive data feeds and maps through the single API language">
-		<meta name="author" content="">
+		<meta name="author" content="Openweathermap">
 
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -80,13 +80,15 @@
 								
 							</thead>
 							<tr>
-								<td><ul><li><span>Data set</span></li> <li><span>Imagery bands</span></li> <li><span>Time period</span></li> <li><span>Metadata</span></li> <li><span>Location</span></li></ul></td>
+								<td><ul style="min-width:200px"><li><span>Source</span></li> <li><span>Imagery bands</span></li> <li><span>Time period</span></li> <li><span>Metadata</span></li> <li><span>Location</span></li></ul></td>
 								<td><ul><li><span>Color processing</span></li> <li><span>Operations with imagery</span></li> <li><span>Styles for weather maps</span></li></ul></td>
-								<td><ul><li><span>Tiles (z,x,y)</span></li> <li><span>Polygons (geojson)</span></li></ul></td>
+								<td><ul><li><span>RGB Tiles</span></li> <li><span>Polygons</span></li></ul></td>
 							</tr>
 						</tbody>
 					</table>
-					<pre><code class="hljs haskel" data-trim>http://sat.owm.io/sql/{z}/{x}/{y}?select={select}&from={from}&where={where}&order={order}&op={op}&APPID={APIKEY}
+					<pre><code class="sql" data-trim>http://sat.owm.io/sql/{z}/{x}/{y}?select={select}&from={from}&where={where}&order={order}&op={op}&APPID={APIKEY}
+					</code></pre>
+					<pre><code class="sql" data-trim>http://sat.owm.io/sql?polygon={polygon}&select={select}&from={from}&where={where}&order={order}&op={op}&APPID={APIKEY}
 					</code></pre>
 				</section>
 
@@ -97,7 +99,7 @@
 					</div>
 					<h2>Visual tools</h2>
 					<p>
-					Get an immediate result with ready-to-use examples, previe your queries in SQL viewer, style maps with CartoCSS in Map Editor
+					Preview and build your API queries in SQL viewer, style maps with CartoCSS in Map Editor
 					</p>
 					<p>
 					<img src="img/sql-viewer.png" width="70%" />
@@ -135,12 +137,13 @@
 					</p>
 				</section>
 				
-				<section >
-						<h1>MODIS Base Map - VANE Language</h1>
+				<section>
+						<h1>VANE Language for MODIS</h1>
+						<p><code>from=modis</code></p>
 				</section>
 
 				<section id="modis">
-					<p><small>MODIS True color imagery is used for low zoom levels. The use of VANE language allows to get the most recent MODIS imagery (<span class="fragment highlight-red">less than 1 hour after satellites path</span>) along with past day imagery to cover the entire Earth.</small></p>
+					<p><small>MODIS True color imagery is used for low zoom levels of Global Base Map. The use of VANE language allows to get the most recent imagery (<span class="fragment highlight-red">less than 1 hour after satellites path</span>) along with past day imagery to cover the entire Earth.</small></p>
 					
 
 					   	<iframe src='maps/modis_slider.html' style="width:100%; height:520px;"></iframe>
@@ -162,7 +165,7 @@
 				</section>
 				
 				<section>
-					<h3>Combine MODIS with weather maps</h3>	
+					<h3>Combine MODIS with weather layers</h3>	
 
 					<p>
 					<img src="img/modis-weathermap.png"/>
@@ -271,7 +274,7 @@
 					<h3>Base Map - indexed maps</h3>
 					<p>
 						Near-infrared and red spectral bands are used to calculate and monitor health vegetation growth. 
-						This index is mapped from a white to green hue. NDVI is strongly important for agriculture and Farm management applications.
+						This index usualy is mapped from a white to green hue. NDVI is strongly important for agriculture and Farm management applications.
 					</p>
 					<p>Use <code>op=NDVI</code> to apply operation to any two spectral bands.
 					</p>
@@ -319,19 +322,19 @@
 
 
 				<section >
-						<h1>Cases - Agriculture</h1>
+						<h1>Business cases & applications</h1>
 				</section>
 
-				<section id="agri" data-background="img/img-uk-farmland_big.jpg" class="list">
+				<section id="agri" data-background="img/img-uk-farmland_big.jpg">
 
 					<div style="background: #fff; padding: 50px;">
-					<h3>Agriculture & smart farming</h3>
-					<a href="https://owm-inc.github.io/VANE-intro/demo_agri.html" target="_blank">See "How to create your own Agriculture Appliction?"</a>
+					<h2>Agriculture & smart farming</h2>
+					<p><img src="img/open_link.png" class="img" style="width:60px; margin: 30px 30px 0 0;"><a href="https://owm-inc.github.io/VANE-intro/demo_agri.html" target="_blank">"How to create your own Agriculture Appliction?"</a></p>
 					</div>
 				</section>
 
 
-				<section data-background="#ddd">
+				<!--<section data-background="#ddd">
 
 					<h3>Combine in your App:</h3>
 					
@@ -339,13 +342,13 @@
 					<p>NDVI Base Map (API)</p>
 
 
-					<pre><code class="hljs haskell" data-trim>http://sat.owm.io/sql/{z}/{x}/{y}?select=b8,b4&from=s2&op=ndvi&order=last&APPID={APIKEY}
+					<pre><code class="sql" data-trim>http://sat.owm.io/sql/{z}/{x}/{y}?select=b8,b4&from=s2&op=ndvi&order=last&APPID={APIKEY}
 					</code></pre>
 
 
 					<p>History weather (API)</p>
 
-					<pre><code class="hljs haskell" data-trim>http://history.openweathermap.org/data/2.5/history/city?lat={lat}&lon={lon}&type=hour&start={start}&end={end}&APPID={APIKEY}
+					<pre><code class="sql" data-trim>http://history.openweathermap.org/data/2.5/history/city?lat={lat}&lon={lon}&type=hour&start={start}&end={end}&APPID={APIKEY}
 					</code></pre>
 					
 					
@@ -372,7 +375,7 @@
 					</p>
 					<p><small>Learn more - <a href="http://owm.io/agri">owm.io/agri</a></small></p>
 
-				</section>
+				</section>-->
 
 
 

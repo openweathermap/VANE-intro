@@ -113,7 +113,7 @@
 
 					<section data-background="img/mainpage_ndvi1.png">
 						<div style="background: #fff; padding:50px;">
-						<h3>Satelite images - indexed maps</h3>
+						<h3>Satellite images - indexed maps</h3>
 						<p>
 							Near-infrared and red spectral bands are used to calculate and monitor health vegetation growth. 
 							NDVI is strongly important for agriculture and Farm management applications.
@@ -122,6 +122,25 @@
 						</p>
 						<div style="margin:-15px 0 0 0"><a href="http://owm.io/sql-viewer?select=b5%2Cb4&from=&where=&op=ndvi&order=last&color=&lat=37.13&lon=-120.61&zoom=11#" target="_blank" class="button">Open in SQL Viewer</a></div>
 						</div>
+
+					</section>
+
+					<section data-background="#ddd">
+
+						<h3>Combine weather and NDVI maps:</h3>
+						
+						
+						<p>NDVI Base Map (API)</p>
+
+
+						<pre><code class="sql" data-trim>http://sat.owm.io/sql/{z}/{x}/{y}?select=b8,b4&from=s2&op=ndvi&order=last&APPID={APIKEY}
+						</code></pre>
+
+
+						<p>History weather (API)</p>
+
+						<pre><code class="sql" data-trim>http://history.openweathermap.org/data/2.5/history/city?lat={lat}&lon={lon}&type=hour&start={start}&end={end}&APPID={APIKEY}
+						</code></pre>
 
 					</section>
 
