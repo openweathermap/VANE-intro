@@ -89,6 +89,11 @@ body {
   max-width: 95%;
   max-height: 95%; }
 
+.reveal img.img {
+    border: 0;
+    box-shadow: none;
+}
+
 .reveal strong,
 .reveal b {
   font-weight: bold; }
